@@ -6,6 +6,20 @@ var url = require('url');
 
 exports.handleRequest = function (req, res) {
   if (req.method === 'GET') {
+    // var url;
+    // // var data = [];
+    // req.on('data', (chunck) => {
+    //   url = chunck.toString().slice(4) +'\n'
+    //   if (archive.isUrlArchived(url, )) {
+          //if the url exists in archive
+              //send content back to client
+          //else if check its in sites list
+              //send "loading" html
+          //else if not in sites list
+              //add url to sites list
+              //send "loading" html
+    //   }
+    // });
     var statusCode = 200;
     if (req.url === '/') {
         fs.readFile('/Users/student/Desktop/hrsf96-web-historian/web/public/index.html', function(err, data) {
@@ -29,11 +43,13 @@ exports.handleRequest = function (req, res) {
           res.write(data);
           res.end();
       });
+    } else if (req.u) {
     } else {  
       res.writeHead(404, defaultCorsHeaders);
       res.end();
     }
   } else if (req.method === 'POST') {
+    console.log('POST', req.url)
     var statusCode = 302;
     var url;
     // var data = [];
